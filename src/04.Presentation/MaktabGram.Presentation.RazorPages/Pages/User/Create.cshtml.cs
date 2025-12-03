@@ -12,9 +12,9 @@ namespace MaktabGram.Presentation.RazorPages.Pages.User
         public void OnGet()
         {
         }
-        public IActionResult OnPost()
+        public IActionResult OnPost(CancellationToken cancellationToken)
         {
-            userApplicationService.Register(model);
+            userApplicationService.Register(model, cancellationToken);
             return RedirectToPage("Index");
         }
     }

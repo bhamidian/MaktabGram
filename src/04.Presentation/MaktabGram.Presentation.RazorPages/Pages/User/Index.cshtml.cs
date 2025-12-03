@@ -10,42 +10,24 @@ namespace MaktabGram.Presentation.RazorPages.Pages.User
     public class IndexModel(IUserApplicationService userApplicationService) : BasePageModel
     {
         public List<GetUserSummaryDto> Users { get; set; }
-        //public IActionResult OnGet()
-        //{
-        //    var userId = GetUserId();
-        //    if (userId != null)
-        //    {
-        //        if (IsAdmin())
-        //        {
-        //            Users = userApplicationService.GetUsersSummary();
-        //            return RedirectToPage("/User/Index");
-        //        }
-        //        else
-        //        {
-        //            return RedirectToPage("/Post/Feeds");
-        //        }
-        //    }
-        //    return Page();
 
-        //}
-
-        public void OnGet()
+        public async Task OnGet(CancellationToken cancellationToken)
         {
-            Users = userApplicationService.GetUsersSummary();
+            Users = await userApplicationService.GetUsersSummary(cancellationToken);
         }
 
 
-        public IActionResult OnGetActive(int id)
+        public IActionResult OnGetActive(int id,CancellationToken cancellationToken)
         {
-            userApplicationService.Active(id);
+            userApplicationService.Active(id, cancellationToken);
 
             return RedirectToPage("Index");
         }
 
 
-        public IActionResult OnGetDeActive(int id)
+        public IActionResult OnGetDeActive(int id,CancellationToken cancellationToken)
         {
-            userApplicationService.DeActive(id);
+            userApplicationService.DeActive(id, cancellationToken);
 
             return RedirectToPage("Index");
         }

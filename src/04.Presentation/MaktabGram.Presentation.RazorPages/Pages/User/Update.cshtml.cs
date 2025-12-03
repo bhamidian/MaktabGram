@@ -3,6 +3,7 @@ using MaktabGram.Domain.Core.UserAgg.Contracts;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace MaktabGram.Presentation.RazorPages.Pages.User
 {
@@ -10,14 +11,14 @@ namespace MaktabGram.Presentation.RazorPages.Pages.User
     {
         [BindProperty]
         public UpdateGetUserDto model { get; set; }
-        public void OnGet(int id)
+        public async Task OnGet(int id,CancellationToken cancellationToken)
         {
-            model = userApplicationService.GetUpdateUserDetails(id);
+            model = await userApplicationService.GetUpdateUserDetails(id, cancellationToken);
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost(CancellationToken cancellationToken)
         {
-            var result = userApplicationService.Update(model.Id, model);
+            var result = await userApplicationService.Update(model.Id, model, cancellationToken);
             if (result.IsSuccess)
             {
                 return RedirectToPage("Index");
