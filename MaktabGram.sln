@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaktabGram.Infrastructure.F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaktabGram.Presentation.RazorPages", "src\04.Presentation\MaktabGram.Presentation.RazorPages\MaktabGram.Presentation.RazorPages.csproj", "{1FD8F685-8795-4021-9F3C-C114BF7F8292}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaktabGram.Infrastructure.Notifications", "src\03.Infrastructure\MaktabGram.Infrastructure.Notifications\MaktabGram.Infrastructure.Notifications.csproj", "{F677B42B-4FE9-4282-92A4-C9AD1061149F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{1FD8F685-8795-4021-9F3C-C114BF7F8292}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD8F685-8795-4021-9F3C-C114BF7F8292}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD8F685-8795-4021-9F3C-C114BF7F8292}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F677B42B-4FE9-4282-92A4-C9AD1061149F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F677B42B-4FE9-4282-92A4-C9AD1061149F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F677B42B-4FE9-4282-92A4-C9AD1061149F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F677B42B-4FE9-4282-92A4-C9AD1061149F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{FD83A9A7-504C-4832-8A70-55E52610F051} = {7D056DD3-281C-4F13-B56A-0CD37F2E30AE}
 		{09331A36-5F4F-456A-BE9E-BF43CA866E49} = {D3D009D4-F8FA-49EA-ADA9-A6E8F9010EFC}
 		{1FD8F685-8795-4021-9F3C-C114BF7F8292} = {6E696498-1182-4C26-B3C9-5AC1C0C6AE63}
+		{F677B42B-4FE9-4282-92A4-C9AD1061149F} = {D3D009D4-F8FA-49EA-ADA9-A6E8F9010EFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {343B6C32-145C-418D-B09C-F41664B6A4D7}

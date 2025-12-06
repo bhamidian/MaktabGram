@@ -1,5 +1,5 @@
 ﻿using MaktabGram.Domain.Core.PostAgg.Entities;
-using MaktabGram.Domain.Core.UserAgg.Contracts;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
 using MaktabGram.Domain.Core.UserAgg.Entities;
 using MaktabGram.Domain.Core.UserAgg.ValueObjects;

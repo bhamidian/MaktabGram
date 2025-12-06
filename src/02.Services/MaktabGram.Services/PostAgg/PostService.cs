@@ -2,7 +2,7 @@
 using MaktabGram.Domain.Core._common.Entities;
 using MaktabGram.Domain.Core.PostAgg.Contracts;
 using MaktabGram.Domain.Core.PostAgg.Dtos;
-using MaktabGram.Domain.Core.UserAgg.Contracts;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
 using MaktabGram.Infrastructure.EfCore.Persistence;
 using MaktabGram.Infrastructure.FileService.Contracts;
 

@@ -1,7 +1,7 @@
 ﻿using MaktabGram.Domain.ApplicationServices.FollowAgg;
 using MaktabGram.Domain.ApplicationServices.UserAgg;
 using MaktabGram.Domain.Core.FollowerAgg.Contracts;
-using MaktabGram.Domain.Core.UserAgg.Contracts;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
 using MaktabGram.Presentation.MVC.Database;
 using MaktabGram.Presentation.MVC.Models;

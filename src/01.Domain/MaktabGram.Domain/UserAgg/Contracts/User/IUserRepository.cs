@@ -1,6 +1,6 @@
 ﻿using MaktabGram.Domain.Core.UserAgg.Dtos;
 
-namespace MaktabGram.Domain.Core.UserAgg.Contracts
+namespace MaktabGram.Domain.Core.UserAgg.Contracts.User
 {
     public interface IUserRepository
     {

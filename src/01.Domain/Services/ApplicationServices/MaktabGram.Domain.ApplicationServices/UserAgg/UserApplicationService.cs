@@ -2,14 +2,20 @@
 using MaktabGram.Domain.Services.UserAgg;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
 using MaktabGram.Domain.Core._common.Entities;
-using MaktabGram.Domain.Core.UserAgg.Contracts;
 using MaktabGram.Infrastructure.FileService.Services;
 using MaktabGram.Infrastructure.FileService.Contracts;
+using MaktabGram.Infrastructure.Notifications.Services;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
+using MaktabGram.Domain.Core.UserAgg.Contracts.Otp;
 
 
 namespace MaktabGram.Domain.ApplicationServices.UserAgg
 {
-    public class UserApplicationService(IUserService userService, IFileService fileService) : IUserApplicationService
+    public class UserApplicationService(IUserService userService,
+        IFileService fileService,
+        ISmsService smsService,
+        IOtpService otpService 
+        ) : IUserApplicationService
     {
         public async Task Active(int userId, CancellationToken cancellationToken)
         {
@@ -51,7 +57,22 @@ namespace MaktabGram.Domain.ApplicationServices.UserAgg
 
         public async Task<Result<bool>> Register(RegisterUserInputDto model, CancellationToken cancellationToken)
         {
-            return await userService.Register(model, cancellationToken);
+
+            var otpIsValid = await otpService.Verify(model.Mobile, model.Otp, Core.UserAgg.Enum.OtpTypeEnum.Register, cancellationToken);
+
+            if(!otpIsValid)
+            {
+                return new Result<bool> { Data = false , Message = "کد یکبار مصرف صحیح نمی باشد" };
+            }
+
+            var result = await userService.Register(model, cancellationToken);
+
+            if (result.IsSuccess)
+            {
+                await smsService.Send(model.Mobile, "به سایت مکتب گرام خوش آمدید");
+                return result;
+            }
+            return result;
         }
 
         public async Task<Result<bool>> Update(int userId, UpdateGetUserDto model, CancellationToken cancellationToken)
@@ -73,6 +94,11 @@ namespace MaktabGram.Domain.ApplicationServices.UserAgg
         {
             return await userService.GetImageProfileUrl(userId, cancellationToken);
         }
-    }
 
+        public async Task SendRegisterOtp(string mobile, CancellationToken cancellationToken)
+        {
+            var otp = await smsService.SendOTP(mobile);
+            await otpService.Create(mobile, otp,Core.UserAgg.Enum.OtpTypeEnum.Register,cancellationToken);
+        }
+    }
 }

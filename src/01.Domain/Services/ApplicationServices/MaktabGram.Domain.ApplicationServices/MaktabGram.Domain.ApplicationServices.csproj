@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\02.Services\MaktabGram.Services\MaktabGram.Domain.Services.csproj" />
+    <ProjectReference Include="..\..\..\..\03.Infrastructure\MaktabGram.Infrastructure.Notifications\MaktabGram.Infrastructure.Notifications.csproj" />
   </ItemGroup>
 
 </Project>

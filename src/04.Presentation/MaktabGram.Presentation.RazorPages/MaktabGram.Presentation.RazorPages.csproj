@@ -12,12 +12,20 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.0" />
+
+
+	  <PackageReference Include="Hangfire.Core" Version="1.8.*" />
+	  <PackageReference Include="Hangfire.SqlServer" Version="1.8.*" />
+	  <PackageReference Include="Hangfire.AspNetCore" Version="1.8.*" />
+	  <PackageReference Include="Microsoft.Data.SqlClient" Version="*" />
+	  
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\01.Domain\Services\ApplicationServices\MaktabGram.Domain.ApplicationServices\MaktabGram.Domain.ApplicationServices.csproj" />
     <ProjectReference Include="..\..\02.Services\MaktabGram.Services\MaktabGram.Domain.Services.csproj" />
     <ProjectReference Include="..\..\03.Infrastructure\MaktabGram.Infrastructure.EfCore\MaktabGram.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\..\03.Infrastructure\MaktabGram.Infrastructure.Notifications\MaktabGram.Infrastructure.Notifications.csproj" />
   </ItemGroup>
 
 </Project>

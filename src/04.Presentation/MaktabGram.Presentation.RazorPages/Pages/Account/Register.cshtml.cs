@@ -1,5 +1,7 @@
-using MaktabGram.Domain.Core.UserAgg.Contracts;
+using Hangfire;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
+using MaktabGram.Presentation.RazorPages.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,6 +15,7 @@ namespace MaktabGram.Presentation.RazorPages.Pages.Account
         public string Mobile { get; set; }
         public string? Username { get; set; }
         public string Password { get; set; }
+        public int Otp { get; set; }
     }
     public class RegisterModel(IUserApplicationService userApplicationService) : PageModel
     {
@@ -34,9 +37,14 @@ namespace MaktabGram.Presentation.RazorPages.Pages.Account
                 Mobile = Model.Mobile,
                 Password = Model.Password,
                 Username = Model.Username,
+                Otp = Model.Otp,
             };
 
             var registerResult = await userApplicationService.Register(userModel, cancellationToken);
+
+            BackgroundJob.Enqueue<IMyServices>(x => x.Log());
+
+
 
             if (registerResult.IsSuccess)
             {
@@ -47,6 +55,12 @@ namespace MaktabGram.Presentation.RazorPages.Pages.Account
                 Message = registerResult.Message;
             }
 
+            return Page();
+        }
+
+        public async Task<IActionResult> OnGetSendOtp(string mobile,CancellationToken cancellationToken)
+        { 
+           await userApplicationService.SendRegisterOtp(mobile, cancellationToken);
             return Page();
         }
     }

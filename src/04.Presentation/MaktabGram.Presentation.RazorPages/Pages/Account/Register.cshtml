@@ -1,6 +1,7 @@
 ﻿@page
 @model MaktabGram.Presentation.RazorPages.Pages.Account.RegisterModel
 @{
+    Layout = "~/Pages/Shared/_AccountLayout.cshtml";
 }
 
 <div class="w-full max-w-md bg-white rounded-2xl p-8 shadow-3xl lg:p-12 transition-all duration-500 border border-gray-100">
@@ -35,9 +36,10 @@
         </div>
 
         <div>
-            <label for="mobile-number" class="block text-sm font-medium text-gray-700 mb-1">شماره موبایل:</label>
+            <label for="mobileNumber" class="block text-sm font-medium text-gray-700 mb-1">شماره موبایل:</label>
             <input type="tel"
                    asp-for="Model.Mobile"
+                   id="mobileNumber"
                    placeholder="مثال: 09121234567"
                    class="w-full p-3 border border-gray-300 rounded-lg text-right focus:ring-2 focus:ring-purple-400 focus:border-purple-500 transition duration-150"
                    required>
@@ -62,6 +64,21 @@
                    required>
         </div>
 
+        <div>
+            <label for="otp" class="block text-sm font-medium text-gray-700 mb-1">کد یکبار مصرف:</label>
+            <input type="number"
+                   asp-for="Model.Otp"
+                   placeholder="حداقل 5 کاراکتر"
+                   class="w-full p-3 border border-gray-300 rounded-lg text-right focus:ring-2 focus:ring-purple-400 focus:border-purple-500 transition duration-150"
+                   required>
+        </div>
+
+        <a id="sendOtpLink"
+           data-handler="SendOtp"
+           class="signup-button w-full text-white font-bold py-3 px-4 rounded-xl text-lg tracking-wide shadow-lg mt-4 text-center block cursor-pointer">
+            ارسال کد یکبار مصرف
+        </a>
+
         <button type="submit"
                 class="signup-button w-full text-white font-bold py-3 px-4 rounded-xl text-lg tracking-wide shadow-lg mt-4">
             ثبت نام
@@ -81,3 +98,20 @@
     </div>
 
 </div>
+
+@section Scripts {
+    <script>
+        document.getElementById('sendOtpLink').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const mobileInput = document.getElementById('mobileNumber');
+            const mobile = mobileInput.value.trim();
+
+            const url = `/Account/Register?handler=SendOtp&mobile=${encodeURIComponent(mobile)}`;
+
+            alert(url);
+
+            window.location.href = url;
+        });
+    </script>
+}

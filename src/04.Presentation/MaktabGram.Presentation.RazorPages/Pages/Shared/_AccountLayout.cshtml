@@ -39,4 +39,7 @@
 <body class="min-h-screen flex items-center justify-center p-4">
     @RenderBody()
 </body>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
 </html>

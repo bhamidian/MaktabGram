@@ -1,8 +1,8 @@
 ﻿using MaktabGram.Framework;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
 using MaktabGram.Domain.Core._common.Entities;
-using MaktabGram.Domain.Core.UserAgg.Contracts;
 using MaktabGram.Infrastructure.FileService.Contracts;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
 
 namespace MaktabGram.Domain.Services.UserAgg
 {

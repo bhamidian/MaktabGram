@@ -20,6 +20,7 @@ namespace MaktabGram.Infrastructure.EfCore.Persistence
         public DbSet<PostLike> PostLikes { get; set; }
         public DbSet<UserProfile> UserProfile { get; set; }
         public DbSet<CommentLike> CommentLikes { get; set; }
+        public DbSet<Otp> Otps { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

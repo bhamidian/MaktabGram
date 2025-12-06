@@ -1,5 +1,5 @@
 ﻿using MaktabGram.Domain.ApplicationServices.UserAgg;
-using MaktabGram.Domain.Core.UserAgg.Contracts;
+using MaktabGram.Domain.Core.UserAgg.Contracts.User;
 using MaktabGram.Domain.Core.UserAgg.Dtos;
 using MaktabGram.Domain.Services.UserAgg;
 using Microsoft.AspNetCore.Mvc;
